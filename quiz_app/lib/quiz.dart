@@ -11,22 +11,21 @@ class Quiz extends StatefulWidget {
   State<Quiz> createState() => _QuizState();
 }
 
-
 class _QuizState extends State<Quiz> {
   String activeScreen = 'start';
-  List<String> selectedAnswers=[];
+  List<String> selectedAnswers = [];
 
-  void onScreenChange(String value){
+  void onScreenChange(String value) {
     setState(() {
-      activeScreen=value;
+      activeScreen = value;
     });
   }
 
-  void onAnswerSelect(String answer){
+  void onAnswerSelect(String answer) {
     selectedAnswers.add(answer);
-    if(selectedAnswers.length==questions.length){
+    if (selectedAnswers.length == questions.length) {
       setState(() {
-        activeScreen='result';
+        activeScreen = 'result';
       });
     }
   }
@@ -37,6 +36,7 @@ class _QuizState extends State<Quiz> {
       activeScreen=value;
     });
   }
+
 
 
   @override
@@ -54,18 +54,18 @@ class _QuizState extends State<Quiz> {
 
     if (activeScreen == 'result') {
       currentScreen =
-          ResultScreen(onAction: onRestart, answerList: selectedAnswers);
+          ResultScreen(onAction: onRestart , answerList: selectedAnswers);
     }
 
     return MaterialApp(
       home: Scaffold(
         body: Container(
           decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors:[Colors.white,Colors.lightBlue],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,)
-          ),
+              gradient: LinearGradient(
+            colors: [Colors.white, Colors.lightBlue],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          )),
           child: currentScreen,
         ),
       ),

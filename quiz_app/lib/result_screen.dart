@@ -6,7 +6,7 @@ class ResultScreen extends StatelessWidget {
       {super.key, required this.answerList, required this.onAction});
 
   final List<String> answerList;
-  final Function() onAction;
+  final Function(String) onAction;
 
   List<Map<String, Object>> getSummary() {
     List<Map<String, Object>> summary = [];
@@ -36,7 +36,7 @@ class ResultScreen extends StatelessWidget {
               .map((s) => Text(((s['questionIndex'] as int) + 1).toString())),
           OutlinedButton(
               onPressed: () {
-                
+                onAction('start');
               },
               child: const Text('Restart'))
         ],
