@@ -9,7 +9,6 @@ class StartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Column(
-        mainAxisSize: MainAxisSize.min,
         children: [
           Image.asset(
             'assets/images/quiz-cover.webp',
@@ -20,11 +19,7 @@ class StartScreen extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(color: Colors.white, fontSize: 28),
           ),
-          OutlinedButton(
-              onPressed: () {
-                onAction('quiz');
-              },
-              child: const Text('Start Quiz'))
+          OutlinedButton(onPressed: () {}, child: const Text('Start Quiz'))
         ],
       ),
     );

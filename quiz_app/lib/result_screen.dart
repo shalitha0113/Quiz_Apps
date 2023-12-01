@@ -6,16 +6,10 @@ class ResultScreen extends StatelessWidget {
       {super.key, required this.answerList, required this.onAction});
 
   final List<String> answerList;
-  final Function(String value) onAction;
+  final Function(String) onAction;
 
-  @override
-  Widget build(BuildContext context) {
-    int numberOfCurrentAnswer = 0;
-
+  List<Map<String, Object>> getSummary() {
     List<Map<String, Object>> summary = [];
-
-    Color color;
-    String remarks;
 
     for (var i = 0; i < answerList.length; i++) {
       summary.add({
@@ -25,80 +19,21 @@ class ResultScreen extends StatelessWidget {
         'user_answer': answerList[i],
       });
     }
+    return summary;
+  }
 
-    //check no of correct answers
-    for (var j = 0; j < summary.length; j++) {
-      if (summary[j]['user_answer'] == summary[j]['correct_answer']) {
-        numberOfCurrentAnswer++;
-      }
-    }
-
-    if (numberOfCurrentAnswer >= 4) {
-      color = Colors.green;
-      remarks = "Great Works";
-    } else if (numberOfCurrentAnswer >= 1) {
-      color = Colors.teal;
-      remarks = "Fair Works";
-    } else {
-      color = Colors.orange;
-      remarks = "Weaks Works";
-    }
-
+  @override
+  Widget build(BuildContext context) {
     return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const SizedBox(
-            height: 40,
-          ),
           const Text(
             'Result Screen',
-            style: TextStyle(
-                color: Colors.black, fontSize: 28, fontWeight: FontWeight.bold),
+            style: TextStyle(color: Colors.white, fontSize: 28),
           ),
-          const SizedBox(
-            height: 10,
-          ),
-          ElevatedButton(
-              onPressed: () {},
-              child: Text("$numberOfCurrentAnswer/${summary.length}")),
-          Container(
-            decoration: const BoxDecoration(),
-            child: Text(
-              remarks,
-              style: TextStyle(
-                  fontSize: 26, fontWeight: FontWeight.bold, color: color),
-            ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          for (var i = 0; i < summary.length; i++)
-            Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "* ${summary[i]['question']}",
-                    style: const TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    "User Answer   : ${summary[i]['user_answer']}",
-                    style: TextStyle(
-                        color: summary[i]['user_answer'] ==
-                                summary[i]['correct_answer']
-                            ? Colors.green
-                            : Colors.red,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  Text("Correct Answer: ${summary[i]['correct_answer']}")
-                ],
-              ),
-            ),
+          ...getSummary()
+              .map((s) => Text(((s['questionIndex'] as int) + 1).toString())),
           OutlinedButton(
               onPressed: () {
                 onAction('start');
