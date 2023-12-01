@@ -36,13 +36,13 @@ class ResultScreen extends StatelessWidget {
 
     if (numberOfCurrentAnswer >= 7) {
       color = Colors.green;
-      remarks = "Great Works";
+      remarks = "Great";
     } else if (numberOfCurrentAnswer >= 5) {
       color = Colors.teal;
-      remarks = "Fair Works";
+      remarks = "Fair";
     } else {
       color = Colors.orange;
-      remarks = "Weaks Works";
+      remarks = "Weaks";
     }
 
     return Center(
@@ -92,7 +92,7 @@ class ResultScreen extends StatelessWidget {
             ),
             for (var i = 0; i < summary.length; i++)
               Padding(
-                padding: const EdgeInsets.all(4.0),
+                padding: const EdgeInsets.all(8.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
