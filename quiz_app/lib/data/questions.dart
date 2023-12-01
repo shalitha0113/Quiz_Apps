@@ -54,4 +54,40 @@ List<QuizQuestion> questions = [
       'By calling updateState()',
     ],
   ),
+  QuizQuestion(
+    'In Flutter, what is the purpose of the "pubspec.yaml" file?',
+    [
+      'Specifying project metadata and dependencies', // Correct Answer
+      'Configuring app theme',
+      'Managing project dependencies',
+      'Defining app permissions',
+    ],
+  ),
+  QuizQuestion(
+    'In Flutter, what does the term "widget tree" refer to?',
+    [
+      'The hierarchy of nested widgets representing the app\'s UI', // Correct Answer
+      ' A data structure for storing widget properties',
+      'A visualization of widget relationships',
+      'A hierarchical structure of UI elements',
+    ],
+  ),
+  QuizQuestion(
+    'What is the purpose of the "BuildContext" parameter in the "build" method of a Flutter widget?',
+    [
+      'Locating the position of the widget in the widget tree', // Correct Answer
+      'Handling user input',
+      'Accessing device location',
+      'Defining widget styling',
+    ],
+  ),
+  QuizQuestion(
+    'What does the "pub" command in Flutter primarily manage?',
+    [
+      'Managing the navigation stack and transitioning between screens', // Correct Answer
+      'Managing app permissions',
+      'Controlling widget animations',
+      'Handling HTTP requests for navigation purposes',
+    ],
+  ),
 ];

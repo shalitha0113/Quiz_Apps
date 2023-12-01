@@ -60,5 +60,4 @@ class _QuestionScreenState extends State<QuestionScreen> {
       ),
     );
   }
-  
 }

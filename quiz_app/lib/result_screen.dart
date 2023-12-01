@@ -33,10 +33,10 @@ class ResultScreen extends StatelessWidget {
       }
     }
 
-    if (numberOfCurrentAnswer >= 4) {
+    if (numberOfCurrentAnswer >= 7) {
       color = Colors.green;
       remarks = "Great Works";
-    } else if (numberOfCurrentAnswer >= 1) {
+    } else if (numberOfCurrentAnswer >= 5) {
       color = Colors.teal;
       remarks = "Fair Works";
     } else {
@@ -45,66 +45,79 @@ class ResultScreen extends StatelessWidget {
     }
 
     return Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const SizedBox(
-            height: 40,
-          ),
-          const Text(
-            'Result Screen',
-            style: TextStyle(
-                color: Colors.black, fontSize: 28, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          ElevatedButton(
-              onPressed: () {},
-              child: Text("$numberOfCurrentAnswer/${summary.length}")),
-          Container(
-            decoration: const BoxDecoration(),
-            child: Text(
-              remarks,
-              style: TextStyle(
-                  fontSize: 26, fontWeight: FontWeight.bold, color: color),
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const SizedBox(
+              height: 40,
             ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          for (var i = 0; i < summary.length; i++)
-            Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "* ${summary[i]['question']}",
-                    style: const TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    "User Answer   : ${summary[i]['user_answer']}",
-                    style: TextStyle(
-                        color: summary[i]['user_answer'] ==
-                                summary[i]['correct_answer']
-                            ? Colors.green
-                            : Colors.red,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  Text("Correct Answer: ${summary[i]['correct_answer']}")
-                ],
+            const Text(
+              'Result Screen',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+                onPressed: () {},
+                child: Text("$numberOfCurrentAnswer/${summary.length}")),
+            Container(
+              decoration: const BoxDecoration(),
+              child: Text(
+                remarks,
+                style: TextStyle(
+                    fontSize: 26, fontWeight: FontWeight.bold, color: color),
               ),
             ),
-          OutlinedButton(
-              onPressed: () {
-                onAction('start');
-              },
-              child: const Text('Restart'))
-        ],
+            const SizedBox(
+              height: 20,
+            ),
+            for (var i = 0; i < summary.length; i++)
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "* ${summary[i]['question']}",
+                      style: const TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      "User Answer   : ${summary[i]['user_answer']}",
+                      style: TextStyle(
+                          color: summary[i]['user_answer'] ==
+                                  summary[i]['correct_answer']
+                              ? Colors.green
+                              : Colors.red,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      summary[i]['user_answer'] == summary[i]['correct_answer']
+                          ? " "
+                          : "Correct Answer: ${summary[i]['correct_answer']}",
+                      style: TextStyle(
+                          color: summary[i]['user_answer'] ==
+                                  summary[i]['correct_answer']
+                              ? Colors.white
+                              : Colors.purple),
+                    )
+                  ],
+                ),
+              ),
+            OutlinedButton(
+                onPressed: () {
+                  onAction('start');
+                },
+                child: const Text('Restart'))
+          ],
+        ),
       ),
     );
   }
