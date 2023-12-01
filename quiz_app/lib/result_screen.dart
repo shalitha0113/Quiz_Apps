@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/data/questions.dart';
 
+
 class ResultScreen extends StatelessWidget {
   const ResultScreen(
       {super.key, required this.answerList, required this.onAction});
@@ -62,8 +63,21 @@ class ResultScreen extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
+            CircularProgressIndicator(
+              
+              value: 0.1*numberOfCurrentAnswer,
+              backgroundColor: const Color.fromARGB(255, 211, 208, 208),
+              strokeWidth: 10.0,
+              valueColor: numberOfCurrentAnswer>=7 ? const AlwaysStoppedAnimation<Color>(Colors.green):numberOfCurrentAnswer>=5 ?const AlwaysStoppedAnimation<Color>(Colors.teal) :const AlwaysStoppedAnimation<Color>(Colors.orange), 
+            ),
+             const SizedBox(
+              height: 10,
+            ),
             ElevatedButton(
                 onPressed: () {},
+                style: TextButton.styleFrom(
+                  backgroundColor: color
+                ) ,
                 child: Text("$numberOfCurrentAnswer/${summary.length}")),
             Container(
               decoration: const BoxDecoration(),
@@ -115,6 +129,7 @@ class ResultScreen extends StatelessWidget {
                 onPressed: () {
                   onAction('start');
                 },
+                style: TextButton.styleFrom(backgroundColor: Colors.white),
                 child: const Text('Restart'))
           ],
         ),

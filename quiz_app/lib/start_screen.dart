@@ -15,15 +15,22 @@ class StartScreen extends StatelessWidget {
             'assets/images/quiz-cover.webp',
             width: 300,
           ),
+           const SizedBox(
+            height: 20,
+          ),
           const Text(
-            'Let\'s do some refreshment on Flutter',
+            'Let\'s do some Quiz..',
             textAlign: TextAlign.center,
             style: TextStyle(color: Colors.white, fontSize: 28),
+          ),
+          const SizedBox(
+            height: 30,
           ),
           OutlinedButton(
               onPressed: () {
                 onAction('quiz');
               },
+              style: TextButton.styleFrom(backgroundColor: Colors.white),
               child: const Text('Start Quiz'))
         ],
       ),
