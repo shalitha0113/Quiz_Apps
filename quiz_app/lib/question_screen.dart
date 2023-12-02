@@ -3,6 +3,7 @@ import 'package:quiz_app/answer_button.dart';
 import 'package:quiz_app/data/questions.dart';
 
 
+
 class QuestionScreen extends StatefulWidget {
   const QuestionScreen(
       {super.key, required this.onAnswer, required this.onAction});
@@ -35,7 +36,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              questions[0].question,
+              questions[currentQuestionIndex].questions,
               textAlign: TextAlign.center,
               style: const TextStyle(color: Colors.white, fontSize: 28),
             ),
@@ -53,12 +54,11 @@ class _QuestionScreenState extends State<QuestionScreen> {
               height: 40,
             ),
             LinearProgressIndicator(
-              value: 0.1 * (currentQuestionIndex+1),
-              minHeight: 10,
-              backgroundColor: const Color.fromARGB(255, 212, 205, 205),
-              valueColor: const AlwaysStoppedAnimation<Color>(Color.fromARGB(255, 51, 206, 56))
-            
-            ),
+                value: 0.1 * (currentQuestionIndex + 1),
+                minHeight: 10,
+                backgroundColor: const Color.fromARGB(255, 212, 205, 205),
+                valueColor: const AlwaysStoppedAnimation<Color>(
+                    Color.fromARGB(255, 51, 206, 56))),
             const SizedBox(
               height: 40,
             ),
@@ -67,7 +67,8 @@ class _QuestionScreenState extends State<QuestionScreen> {
                   widget.onAction('start');
                 },
                 child: const Text('Back to Start',
-                    style: TextStyle(fontSize: 18, color: Color.fromARGB(255, 18, 52, 145))))
+                    style: TextStyle(
+                        fontSize: 18, color: Color.fromARGB(255, 18, 52, 145))))
           ],
         ),
       ),
